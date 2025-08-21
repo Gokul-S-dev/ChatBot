@@ -28,7 +28,7 @@ body {
 }
 
 .chat-header {
-	background: #444654;
+	background: linear-gradient(135deg, #3a3b46 0%, #2b2c34 50%, #1f2028 100%);
 	color: #ececf1;
 	padding: 20px 0;
 	font-size: 1.8rem;
@@ -43,13 +43,20 @@ body {
 	position: relative;
 }
 
+.header-actions {
+	position: absolute;
+	right: 16px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
 .chatbot-title {
 	font-size: 1.8rem;
 }
 
 .status-indicator {
-	position: absolute;
-	right: 20px;
+	position: static;
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
@@ -121,6 +128,9 @@ body {
 	animation: fadeIn 0.5s;
 }
 
+/* Remove avatars for a cleaner look */
+.chat-message.user::before, .chat-message.bot::before { content: none; display: none; }
+
 @keyframes fadeIn {
 	from { opacity: 0; transform: translateY(20px); }
 	to { opacity: 1; transform: translateY(0); }
@@ -135,12 +145,15 @@ body {
 }
 
 .message-content {
-	padding: 16px 22px;
+	padding: 10px 14px;
 	border-radius: 12px;
-	max-width: 80vw;
-	font-size: 1.1rem;
-	line-height: 1.6;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+	display: inline-block;
+	width: auto;
+	max-width: 65%;
+	font-size: 1.05rem;
+	line-height: 1.5;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+	backdrop-filter: none;
 	word-break: break-word;
 	position: relative;
 }
@@ -154,12 +167,27 @@ body {
 }
 
 .chat-message.bot .message-content {
-	background: #444654;
+	background: rgba(68, 70, 84, 0.85);
 	color: #ececf1;
 	border-bottom-left-radius: 6px;
 	margin-right: 8px;
 	border: 1px solid #565869;
 }
+
+/* Hide timestamps for compact bubbles */
+.message-meta { display: none; }
+
+
+/* Light theme */
+body.light { background: #e9edf3; color: #1d212a; }
+body.light .chatbot-container { background: #f7f9fc; border-color: #d9e1ee; }
+body.light .chat-header { color: #1d212a; border-bottom-color: #d9e1ee; background: linear-gradient(135deg, #e7ebf3 0%, #dde3ee 50%, #d3dae8 100%); }
+body.light .chat-window { background: #eef2f7; }
+body.light #chat-input { background: #f7f9fc; color: #1d212a; border-color: #d9e1ee; }
+body.light .chat-message.user .message-content { background: #e9effa; color: #1d212a; border-color: #d3dced; box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+body.light .chat-message.bot .message-content { background: rgba(255,255,255,0.82); color: #1d212a; border-color: #d9e1ee; box-shadow: 0 6px 18px rgba(0,0,0,0.08); backdrop-filter: saturate(160%) blur(6px); }
+body.light .btn-icon { border-color: #d3dced; color: #1d212a; }
+body.light .typing-indicator span { background: #4a4f5c; }
 
 .chat-input-area {
 	border-top: 1px solid #565869;
