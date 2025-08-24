@@ -159,5 +159,8 @@ This project is licensed under the ISC License.
 If you encounter any issues or have questions, please open an issue on GitHub.
 
 ---
+## 👨‍💻 Author
+
+**Sinom** - Developer 
 
 **Built with ❤️ using modern web technologies for an exceptional AI chat experience!**
